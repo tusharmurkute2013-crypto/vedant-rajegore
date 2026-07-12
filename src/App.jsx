@@ -28,7 +28,7 @@ import AuthPage from './AuthPage'
 // ─────────────────────────────────────────────────────────────────────────────
 const API_URL = (import.meta.env.VITE_API_URL || (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
   ? 'http://localhost:8000'
-  : 'https://backend-new-3m56.onrender.com')).replace(/\/$/, '')
+  : 'https://deployment-project-frontend-snowy.vercel.app')).replace(/\/$/, '')
 
 function App() {
   // ─── Auth State ──────────────────────────────────────────────────────────
@@ -245,7 +245,6 @@ function App() {
       ])
     }
   }
-
   // ─────────────────────────────────────────────────────────────────────────
   // Math Game Logic
   // ─────────────────────────────────────────────────────────────────────────
