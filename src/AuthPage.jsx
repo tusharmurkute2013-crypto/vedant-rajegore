@@ -47,7 +47,19 @@ function AuthPage({ API_URL, onAuthSuccess }) {
           school: formData.school.trim()
         }
 
-    const endpoint = isLogin ? '/api/auth/login' : '/api/auth/register'
+    try {
+  const demoUser = {
+    username: formData.username,
+    name: formData.name || "Demo User"
+  }
+
+  onAuthSuccess("demo-token", demoUser)
+
+} catch (err) {
+  setError(err.message || "Login failed")
+} finally {
+  setLoading(false)
+}
 
     try {
   // Demo login (any username/password)
