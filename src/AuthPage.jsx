@@ -50,16 +50,19 @@ function AuthPage({ API_URL, onAuthSuccess }) {
     const endpoint = isLogin ? '/api/auth/login' : '/api/auth/register'
 
     try {
-      const res = await fetch(`${API_URL}${endpoint}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      })
+  // Demo login (any username/password)
+  const demoUser = {
+    username: formData.username,
+    name: "Demo User"
+  }
 
-      const data = await res.json()
-      if (!res.ok) {
-        throw new Error(data.detail || `HTTP Error ${res.status}`)
-      }
+  onAuthSuccess("demo-token", demoUser)
+
+} catch (err) {
+  setError(err.message || "Login failed")
+} finally {
+  setLoading(false)
+}
 
       // Successful login/register
       onAuthSuccess(data.token, data.user)
